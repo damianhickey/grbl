@@ -54,7 +54,7 @@ int main(void)
   #else
     sys.state = STATE_IDLE;
   #endif
-  
+
   // Check for power-up and set system alarm if homing is enabled to force homing cycle
   // by setting Grbl's alarm state. Alarm locks out all g-code commands, including the
   // startup scripts, but allows access to settings and internal commands. Only a homing
@@ -69,7 +69,7 @@ int main(void)
   // Grbl initialization loop upon power-up or a system abort. For the latter, all processes
   // will return to this loop to be cleanly re-initialized.
   for(;;) {
-
+    printString("Test\n");
     // Reset system variables.
     uint8_t prior_state = sys.state;
     memset(&sys, 0, sizeof(system_t)); // Clear system struct variable.
@@ -101,7 +101,7 @@ int main(void)
     // Print welcome message. Indicates an initialization has occured at power-up or with a reset.
     report_init_message();
 
-    // Start Grbl main loop. Processes program inputs and executes them.
+    // Start Grbl main loop. Processes program inputs and executes them.  DH Joystick Commands could go here.
     protocol_main_loop();
 
   }

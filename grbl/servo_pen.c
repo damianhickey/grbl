@@ -21,7 +21,6 @@
 */
 
 #include "grbl.h"
-
 /*
 Pen Servo:
 
@@ -40,7 +39,7 @@ The other end is 0.002 sec (0.002 / 0.000064 = 31 ticks)
 
 
 */
-// #define PEN_SERVO    // ...define here or in cpu_map.h to activate
+#define PEN_SERVO    // ...define here or in cpu_map.h to activate
 
 // these are full travel values. If you want to move less than full travel adjust these values
 // If your servo is going the wrong way, swap them.
@@ -67,12 +66,14 @@ void init_servo()
 
 void pen_up()
 {
-	SERVO_OCR_REGISTER = PEN_SERVO_UP;
+  //printString("Pen Up\n");
+  SERVO_OCR_REGISTER = PEN_SERVO_UP;
 }
 
 void pen_down()
 {
-	SERVO_OCR_REGISTER = PEN_SERVO_DOWN;
+  //printString("Pen Down\n");
+  SERVO_OCR_REGISTER = PEN_SERVO_DOWN;
 }
 
 void set_pen_pos()
